@@ -42,7 +42,7 @@ function App() {
 
   return (<div style={themeStyleGeneral}>
     <div style={themeStyleColumn}>  
-      {alertVisible && <Alert onClose={() => setAlertVisible(false)}> <div>Agent Selected: {selectedItem}</div> </Alert>}
+      {alertVisible && <Alert onClose={() => setAlertVisible(false)}> <div>Agent Selected: <br />{selectedItem}</div> </Alert>}
       <ListGroup items={items} heading="Agents" onSelectItem={handleSelectItem} />
       <Button color='info'onClick={() => setAlertVisible(true)}>
         Confirm
