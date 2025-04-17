@@ -20,7 +20,7 @@ function App() {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   }
 
-  const themeStyle = {
+  const themeStyleGeneral = {
     backgroundColor: theme === 'light' ? '#f5f5f5' : '#333333',
     color: theme === 'light' ? '#000' : '#fff',
     display: 'flex',
@@ -28,15 +28,27 @@ function App() {
     minHeight: '100vh',
   };
 
-  return (<div style={themeStyle}>
-    <div style={{display: 'flex', flexDirection: 'column', width: '300px', gap: '16px', paddingLeft: '16px', paddingRight:'16px', backgroundColor: '#3a3a3a'}}>
-      {alertVisible && <Alert onClose={() => setAlertVisible(false)}>Agent Selected: {selectedItem}</Alert>}
+  const themeStyleColumn = {
+    display: 'flex', 
+    flexDirection: 'column' as const,
+    width: '250px', 
+    gap: '16px', 
+    paddingTop: '10px',
+    paddingLeft: '16px', 
+    paddingRight:'16px', 
+    backgroundColor: theme === 'light' ? '#D4D4D4' : '#3a3a3a',
+    color: theme === 'light' ? '#000' : '#fff',
+  };
+
+  return (<div style={themeStyleGeneral}>
+    <div style={themeStyleColumn}>  
+      {alertVisible && <Alert onClose={() => setAlertVisible(false)}> <div>Agent Selected: {selectedItem}</div> </Alert>}
       <ListGroup items={items} heading="Agents" onSelectItem={handleSelectItem} />
       <Button color='info'onClick={() => setAlertVisible(true)}>
         Confirm
       </Button>
     </div>
-    <div style={{position: 'absolute', bottom: '16px', left: '16px'}}>
+    <div style={{position: 'absolute', bottom: '16px', left: '58px'}}>
         <Button color='secondary' onClick={toggleTheme}>
           Toggle Theme
         </Button>

@@ -13,7 +13,7 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
    
     return (
         <>
-            <h1>{heading}</h1>
+            <h1 style={{textAlign: 'center'}}>{heading}</h1>
             { message }
             <ul className="list-group">
                 {items.map((item, index) => 
